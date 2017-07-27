@@ -22,12 +22,46 @@ RepositoryService :
 
 DomainInterface :
 	'DomainInterface' name=ID '{'
-	
+		(element+=Element)*
 	'}'
 ;
 
 DataPort :
 	'DataPort' name=ID '{'
-		'interfaces' ':' 'BasicModel.IDomain1DM' //temporay 
+		// interfaces should meet the ID rule
+		'interfaces' ':' crossModel=[Model]'.'crossInterface=[DomainInterface]
 	'}'
+;
+
+Element:
+	Type | Entity | ValueObject
+;
+
+Type :
+	'Type' Datatype ';'
+;
+
+Datatype:
+	'Double' | 'Int' | 'String'
+;
+
+Entity:
+	'Immutable' 'NonVolatile' 'Entity' name=ID  multiplicity=Multiplicity '{'
+	
+	'}' 
+;
+
+Multiplicity:	//e.g. [0, inf] => zero to infinite; [2,5] => two to five
+	'[' name=INT  ',' (name=INT |'inf' ) ']'
+;
+
+ValueObject:
+	'ValueObject' name = ID '{'
+		attribute = Attribute
+	'}'
+;
+
+Attribute:
+	'attributes' ':'
+		
 ;
