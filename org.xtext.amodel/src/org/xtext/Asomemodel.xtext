@@ -1,0 +1,33 @@
+grammar org.xtext.Asomemodel with org.eclipse.xtext.common.Terminals
+
+generate asomemodel "http://www.xtext.org/Asomemodel"
+
+Asomemodel :
+	Model
+;
+
+Model :
+	'Model' name=ID '{'
+		(repositoryservice = RepositoryService)?
+		(domaininterface = DomainInterface)?
+	'}'
+;
+
+
+RepositoryService :
+	 'RepositoryService' name=ID '{'
+		'Provided' dataport = DataPort
+	'}'
+;
+
+DomainInterface :
+	'DomainInterface' name=ID '{'
+	
+	'}'
+;
+
+DataPort :
+	'DataPort' name=ID '{'
+		'interfaces' ':' 'BasicModel.IDomain1DM' //temporay 
+	'}'
+;
