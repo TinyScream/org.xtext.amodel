@@ -38,11 +38,7 @@ Element:
 ;
 
 Type :
-	'Type' Datatype ';'
-;
-
-Datatype:
-	'Double' | 'Int' | 'String'
+	'Type' name=ID ';'
 ;
 
 Entity:
@@ -67,7 +63,7 @@ Attri:
 	name=ID ':' 
 	crossModel=[Model] '.'
 	crossInterface=[DomainInterface] '.'
-	datatype=Datatype
+	type=[Type]
 	multiplicity=Multiplicity
 	order=Order
 	';'
