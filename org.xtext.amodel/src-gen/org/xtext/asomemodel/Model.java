@@ -102,4 +102,6 @@ public interface Model extends Asomemodel
    */
   void setDomaininterface(DomainInterface value);
 
+public abstract CharSequence compile();
+
 } // Model

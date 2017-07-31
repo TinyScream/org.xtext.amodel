@@ -44,7 +44,7 @@ Type :
 Entity:
 	'Immutable' 'NonVolatile' 'Entity' name=ID  multiplicity=Multiplicity '{'
 		'attributes' ':'
-		(attri+=Attri)*	
+		(attribute+=Attribute)*	
 	'}' 
 ;
 
@@ -55,11 +55,11 @@ Multiplicity:	//e.g. [0, inf] => zero to infinite; [2,5] => two to five
 ValueObject:
 	'ValueObject' name=ID '{'
 		'attributes' ':'
-		(attri+=Attri)*
+		(attribute+=Attribute)*
 	'}'
 ;
 
-Attri:
+Attribute:
 	name=ID ':' 
 	crossModel=[Model] '.'
 	crossInterface=[DomainInterface] '.'
